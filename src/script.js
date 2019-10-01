@@ -33,9 +33,8 @@ const App = () => {
     setQuote(chosenQuote);
   };
 
-  let twitterLink;
-
   //making the machine tweet
+  let twitterLink;
   let quoteTextElem = quote.quoteText;
   let quoteAuthorElem = " - " + quote.quoteAuthor;
   let contentQuote = quoteTextElem + quoteAuthorElem;
