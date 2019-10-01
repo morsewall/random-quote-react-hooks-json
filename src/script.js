@@ -5,21 +5,19 @@ let quotes;
 
 //defining the function component.
 const App = () => {
+  //initializing the initial state
   const [quote, setQuote] = React.useState("");
 
+  //asynchronous function that fetches JSON content, populates the quotes array and updates state with a quote (following the fetch being complete)
   React.useEffect(async () => {
     const responseJSON = await fetch(
       "https://cdn.jsdelivr.net/gh/morsewall/jsondb@master/db.json"
     );
     const responseObject = await responseJSON.json();
     quotes = responseObject.quotes;
-    console.log(quotes);
     let initialQuote = quotes[Math.floor(Math.random() * quotes.length)];
-    console.log(initialQuote);
     setQuote(initialQuote);
   }, []);
-
-  // React.useEffect(() => {console.log('Hi')});
 
   const random = array => {
     return Math.floor(Math.random() * array.length);
@@ -32,17 +30,13 @@ const App = () => {
   //defining a function to update the state with a new quote
   const chosenRandomQuoteToState = () => {
     let chosenQuote = randomQuoteFunction(quotes);
-    // console.log(chosenQuote);
     setQuote(chosenQuote);
   };
-
-  console.log(quote);
 
   let twitterLink;
 
   //making the machine tweet
   let quoteTextElem = quote.quoteText;
-  // console.log(quote);
   let quoteAuthorElem = " - " + quote.quoteAuthor;
   let contentQuote = quoteTextElem + quoteAuthorElem;
   if (contentQuote.length > 280) {
@@ -55,13 +49,10 @@ const App = () => {
       quoteAuthorElem;
     //generate url available for Twitter intent and inject url on HTML
     twitterLink = "https://twitter.com/intent/tweet?text=" + subString;
-    // console.log(twitterLink);
   } else {
     //generate url available for Twitter intent and inject url on HTML
     twitterLink = "https://twitter.com/intent/tweet?text=" + contentQuote;
-    // console.log(twitterLink);
   }
-  // console.log(twitterLink);
 
   //the component returns JSX, and as per code snippet below, JSX clearly represents HTML, composing the UI.
   return (
