@@ -96,7 +96,7 @@ const App = () => {
             </a>
           </li>
         </ul>
-        <span>© 2019 Developed by Pat. All Rights Reserved.</span>
+        <span>© Developed by Pat. All Rights Reserved.</span>
       </footer>
     </React.Fragment>
   );
